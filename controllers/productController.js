@@ -3,7 +3,7 @@ const Product = require("../models/product");
 const getProducts = async (req, res, next) => {
   try {
     const products = await Product.find();
-    res.status(200).json({ ok: true, data: products });
+    res.status(200).json({ ok: true, data: products, count: products.length });
   } catch (error) {
     res.status(404).json({ ok: false, message: error });
   }
@@ -20,4 +20,4 @@ const createProduct = (req, res, next) => {
     .catch((err) => console.log(err));
 };
 
-module.exports = {getProducts, createProduct}
+module.exports = { getProducts, createProduct };
